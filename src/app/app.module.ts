@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmPasswordDirective } from './directives/confirm-password.directive';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
-    ConfirmPasswordDirective
+    ConfirmPasswordDirective,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

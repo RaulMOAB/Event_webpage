@@ -9,7 +9,7 @@ export class User{
 
 
 
-    public constructor(username:string, email:string, password:string, role:string, civil_status:any, gender:any, information:any){
+    public constructor(username:string, email:string, civil_status:any, gender:any, information:any, password:string = '12345678', role:string = 'buyer'){
         this._username = username;     
         this._email = email;
         this._password = password
