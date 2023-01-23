@@ -1,0 +1,16 @@
+
+      <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../../../assets/img/7_1sasa11.jpg" width="30" height="24" class="d-inline-block align-text-top">
+            GetConnected
+          </a>
+          <div class="d-flex">
+            <button type="button" class="btn btn-primary me-2"><a routerLink="login-form" class="text-white">Login</a></button>
+            <div *ngIf="logged_in == true">
+              <button type="button" class="btn btn-danger">Logout</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+

@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersDbService {
+export class UsersDbService{
 
-  constructor() { }
+  users!:User[];
+
+  constructor() { 
+    this.users = this.createUsers();
+
+  }
+ 
 
   createUsers():User[]{
 
@@ -88,15 +94,30 @@ export class UsersDbService {
     for (let i = 0; i < 18; i++) {
      let random = Math.trunc(Math.random() * 20) + 1;
      let random_of_2 =  Math.trunc(Math.random() * 2) + 1;
-     let random_of_3 =  Math.trunc(Math.random() * civil_status.length) + 1;
+     let random_of_3 =  Math.trunc(Math.random() * civil_status.length);
 
      let user:User = new User(usernames[random], emails[random],civil_status[random_of_3], gender[random_of_3], information[random_of_3]);
      registered_users.push(user) ;
     }
-    console.table(registered_users);
-    console.log(registered_users.length);
+    //console.table(registered_users);
+    
 
     return registered_users;
   
+ }
+
+
+
+check_login(username:string, password:string):string{
+  let exist:string = '';
+  console.log(typeof this.users);
+  this.users.forEach(user =>{
+    if ((user._username === username) && (user._password === password)) {
+      exist = user._role;
+    } 
+  })
+
+  return exist;
+ 
  }
 }

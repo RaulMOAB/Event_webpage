@@ -18,7 +18,7 @@ export class RegisterFormComponent {
   sex!:any;
   interest!:any;
   civil_status:any = ['Casado/a', 'Soltero/a', 'Divorciado/a']
-  information:any  = ['Videojuegos', 'Accesorios', 'Novedades del mercado']
+  information:any  = ['Cine', 'Conciertos', 'Eventos']
   info!:string;//parametro de onChange que recoge el valor del checkbox
   selectedCheckbox:any = [];//checkboxes seleccionados
   gender:any       = ['Hombre', 'Mujer', 'Otros']

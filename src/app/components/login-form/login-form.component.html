@@ -1,8 +1,7 @@
-
 <div class="container">
     <div class="row">
-      <div class="col mt-5 ">
-            <h2 class="text-center mb-2">Entra y compra tu entrada!</h2>
+      <h2 class="text-center mt-5 mb-2">Entra y compra tu entrada</h2>
+      <div class="col-md-6 mt-3 mx-auto">
             <span class="text-center">¿Todavía no tienes cuenta? <a href="/register">Regístrate</a></span>
               <form [formGroup]="loginForm" (ngSubmit)="submit()">
                 <!--Username-->
@@ -14,6 +13,9 @@
                     </div>
                     <div *ngIf="this.loginForm.get('username')?.errors?.['pattern'] && this.loginForm.get('username')?.touched" class="error">
                       El nombre de usuario debe contener sólo carácteres
+                    </div>
+                    <div *ngIf="this.loginForm.get('username')?.errors?.['minlength'] && this.loginForm.get('username')?.touched" class="error">
+                      El nombre de usuario debe contener al menos 8 caracteres
                     </div>
                   </div>
                   <!--Password-->
@@ -37,6 +39,6 @@
                 </form>
                 
           </div>
-      </div>
-  </div>
+    </div>
+</div>
   

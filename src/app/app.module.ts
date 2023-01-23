@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmPasswordDirective } from './directives/confirm-password.directive';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 
+import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     ConfirmPasswordDirective,
-    RegisterFormComponent
+    RegisterFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
