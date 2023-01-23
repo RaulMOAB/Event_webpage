@@ -9,11 +9,17 @@ export class UsersDbService{
 
   users!:User[];
   private logged_in = new BehaviorSubject(false);
+  private user_role = new BehaviorSubject('buyer');
 
   public login = this.logged_in.asObservable();
+  public role  = this.user_role.asObservable();
 
   is_logged(login:boolean){
     this.logged_in.next(login);
+  }
+
+  get_role(role:string){
+    this.user_role.next(role);
   }
 
   constructor() { 

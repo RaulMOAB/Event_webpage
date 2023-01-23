@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventDbService } from 'src/app/services/event-db.service';
+import { UsersDbService } from 'src/app/services/users-db.service';
 import { Event } from '../../model/event';
 
 @Component({
@@ -13,7 +14,7 @@ export class EventsComponent implements OnInit{
   events_per_page!:number;
   current_page!:number;
 
-  constructor(private eventService:EventDbService){}
+  constructor(private eventService:EventDbService, private service:UsersDbService){}
 
   ngOnInit(): void {
     this.events_per_page = 10;
