@@ -7,8 +7,8 @@
           </a>
           <div class="d-flex">
             <button type="button" class="btn btn-primary me-2"><a routerLink="login-form" class="text-white">Login</a></button>
-            <div *ngIf="logged_in == true">
-              <button type="button" class="btn btn-danger">Logout</button>
+            <div *ngIf="has_logged">
+              <button type="button" class="btn btn-danger" (click)="logout()"><a routerLink="login-form" class="text-white">Logout</a></button>
             </div>
           </div>
         </div>

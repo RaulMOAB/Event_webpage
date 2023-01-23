@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user';
 
 @Injectable({
@@ -7,6 +8,13 @@ import { User } from '../model/user';
 export class UsersDbService{
 
   users!:User[];
+  private logged_in = new BehaviorSubject(false);
+
+  public login = this.logged_in.asObservable();
+
+  is_logged(login:boolean){
+    this.logged_in.next(login);
+  }
 
   constructor() { 
     this.users = this.createUsers();

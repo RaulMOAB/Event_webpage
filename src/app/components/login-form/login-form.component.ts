@@ -10,8 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit{
-@Input() logged_in:boolean = false;
-
+  is_logged:boolean = false;
   users!:User[];
   username!:string;
   password!:string;
@@ -36,6 +35,13 @@ export class LoginFormComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.service.login.subscribe(
+      login =>{
+        this.is_logged = login;        
+      }          
+    );
+
+
     this.username = '';
     this.password = '';
     this.users = this.service.createUsers();
@@ -53,10 +59,11 @@ export class LoginFormComponent implements OnInit{
     if (this.user_role) {
       this.myCookie.set('user_cookie', `${this.username} ${this.user_role}`);
       console.log(this.myCookie);
-      this.logged_in = true;
+      this.service.is_logged(true);
     }
     console.log(this.user_role);
     
   }
+
 
 }
