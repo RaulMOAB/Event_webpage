@@ -10,6 +10,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EventsComponent } from './components/events/events.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginFormComponent,
     ConfirmPasswordDirective,
     RegisterFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

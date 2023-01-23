@@ -118,7 +118,6 @@ export class UsersDbService{
 
 check_login(username:string, password:string):string{
   let exist:string = '';
-  console.log(typeof this.users);
   this.users.forEach(user =>{
     if ((user._username === username) && (user._password === password)) {
       exist = user._role;

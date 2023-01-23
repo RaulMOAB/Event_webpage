@@ -6,8 +6,10 @@
             GetConnected
           </a>
           <div class="d-flex">
-            <button type="button" class="btn btn-primary me-2"><a routerLink="login-form" class="text-white">Login</a></button>
-            <div *ngIf="has_logged">
+            <div *ngIf="!has_logged;">
+              <button type="button" class="btn btn-primary me-2"><a routerLink="login-form" class="text-white">Login</a></button>
+            </div>
+            <div *ngIf="has_logged;">
               <button type="button" class="btn btn-danger" (click)="logout()"><a routerLink="login-form" class="text-white">Logout</a></button>
             </div>
           </div>

@@ -21,7 +21,7 @@
                   <!--Password-->
                   <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="text" class="form-control" formControlName="password">
+                    <input type="password" class="form-control" formControlName="password">
                     <div *ngIf="this.loginForm.get('password')?.errors?.['required'] && this.loginForm.get('password')?.touched" class="error">
                       Este campo es obligatorio
                     </div>
@@ -30,14 +30,16 @@
                     </div>
                     <div *ngIf="this.loginForm.get('password')?.errors?.['pattern'] && this.loginForm.get('password')?.touched" class="error">
                       La contraseña debe contener sólo carácteres y números
-                    </div>
+                    </div>                  
                   </div>
                   <!--Submit-->
                   <div class="">
                     <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" >Submit</button>
                   </div>
                 </form>
-                
+                <div *ngIf="user_error" class="error mt-3">
+                  La credenciales son incorrectas
+                </div>              
           </div>
     </div>
 </div>

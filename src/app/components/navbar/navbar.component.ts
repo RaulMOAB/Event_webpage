@@ -10,6 +10,7 @@ import { UsersDbService } from 'src/app/services/users-db.service';
 export class NavbarComponent implements OnInit{
 
   has_logged:boolean = false;
+  
 
 
   constructor(private service:UsersDbService, private myCookie: CookieService){}
@@ -25,6 +26,6 @@ export class NavbarComponent implements OnInit{
 
   logout(){
     this.myCookie.delete('user_cookie');
-    
+    this.has_logged = false;
   }
 }

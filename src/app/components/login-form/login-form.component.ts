@@ -4,6 +4,7 @@ import { User } from 'src/app/model/user';
 import { UsersDbService } from 'src/app/services/users-db.service';
 
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -11,12 +12,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginFormComponent implements OnInit{
   is_logged:boolean = false;
+  has_logged!:string;
+  user_error!:boolean;
   users!:User[];
   username!:string;
   password!:string;
   user_role!:string;
 
-  constructor(private service: UsersDbService, private myCookie: CookieService){}
+  constructor(private service: UsersDbService, private myCookie: CookieService, private router: Router){}
   
   loginForm = new FormGroup({
     username: new FormControl('',
@@ -35,12 +38,22 @@ export class LoginFormComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.has_logged = localStorage.getItem('has_logged')!;
+   
     this.service.login.subscribe(
       login =>{
         this.is_logged = login;        
       }          
-    );
+      );
 
+      if (this.has_logged == 'true') {
+        this.service.is_logged(true);
+        
+      }else{
+        this.service.is_logged(false);
+       
+      }
+console.log(this.is_logged);
 
     this.username = '';
     this.password = '';
@@ -58,10 +71,16 @@ export class LoginFormComponent implements OnInit{
 
     if (this.user_role) {
       this.myCookie.set('user_cookie', `${this.username} ${this.user_role}`);
-      console.log(this.myCookie);
+      
       this.service.is_logged(true);
+      localStorage.setItem('has_logged',JSON.stringify(this.is_logged));
+      this.router.navigate(['/events']);
+
+    }else{
+      this.service.is_logged(false);
+      this.user_error = true;
     }
-    console.log(this.user_role);
+    
     
   }
 
