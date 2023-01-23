@@ -1,0 +1,8 @@
+/* #container-events{
+   background-image: url('../../../assets/img/pexels-josh-sorenson-976866.jpg');
+   background-size: cover;
+   background-position: center center;
+} */
+#card{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

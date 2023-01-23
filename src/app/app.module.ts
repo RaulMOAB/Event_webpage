@@ -1,5 +1,11 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+
+registerLocaleData(localeDe, 'es-ES', localeDeExtra);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +15,7 @@ import { ConfirmPasswordDirective } from './directives/confirm-password.directiv
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EventsComponent } from './components/events/events.component';
 
@@ -22,13 +29,16 @@ import { EventsComponent } from './components/events/events.component';
     EventsComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, 
+    {provide: LOCALE_ID,
+    useValue: 'es-ES'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Event } from '../model/event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventDbService {
-  event_created!:Event;
-  event_list!:Event[];
 
-  constructor() { }
+  events!:Event[];
+  
+
+  constructor() { 
+    this.events = this.createRandomEvents();
+  }
+
+
 
   randomGenerator(list:string[]):number{
    let random_element = Math.trunc(Math.random() * list.length);
@@ -15,29 +21,47 @@ export class EventDbService {
    return random_element;
   }
 
-  createRandomEvents(){
+  createRandomEvents():Event[]{
+
+    let event_list:Event[] = [];
     let events_name = [
-      'Bring Me the Horizon',
+      'Bring Me The Horizon',
       'Michael Bublé',
       'Tokio Hotel',
       'Capitán Carver',
       'La Ballena (The Whale)'
     ];
 
-    let event_types = ['Concert', 'Movie'];
-    let dates       = ['2023-05-15', '2023-10-14', '2023-01-30', '2023-06-11','2023-02-04'];;
-    let locations   = ['Barcelona', 'Madrid', 'Granada'];
-    let prices      = ['35.95', '96.50', '25.50',' 75.99', '12'];
+    let event_types:string[] = ['Concert', 'Movie'];
+    let dates:string[]       = ['2023-05-15', '2023-10-14', '2023-01-30', '2023-06-11','2023-02-04'];;
+    let locations:string[]   = ['Barcelona', 'Madrid', 'Granada'];
+    let prices:string[]      = ['35.95', '96.50', '25.50',' 75.99', '12'];
 
-    //random genertor
-    let random = this.randomGenerator(events_name);
-
-
+    
+    
+    
     for (let i = 0; i < 100; i++) {
-      let random_dates = new Date(dates[random]);
-      this.event_created = new Event(events_name[random], event_types[random], random_dates, locations[random], prices[random]);
+      //random genertor
+      let random_names:number     = this.randomGenerator(events_name);
+      let random_types:number     = this.randomGenerator(event_types);
+      let random_dates:number     = this.randomGenerator(dates);
+      let random_locations:number = this.randomGenerator(locations);
+      let random_prices:number    = this.randomGenerator(prices);
+      let random_dates_obj:Date = new Date(dates[random_dates]);
+      
+
+      let event_created = new Event(
+        events_name[random_names],
+        event_types[random_types],
+        random_dates_obj,
+        locations[random_locations],
+        prices[random_prices]);
+
+      event_list.push(event_created)!;  
       
     }
+
+    return event_list;
   }
 
    
