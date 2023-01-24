@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { Event } from '../model/event';
 
 @Injectable({
@@ -42,7 +41,7 @@ export class EventDbService {
     
     
     
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
       //random genertor
       let random_names:number     = this.randomGenerator(events_name);
       let random_types:number     = this.randomGenerator(event_types);

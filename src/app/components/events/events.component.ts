@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit{
   constructor(private eventService:EventDbService, private service:UsersDbService, private MyCookie:CookieService){}
 
   ngOnInit(): void {
-    this.events_per_page = 10;
+    this.events_per_page = 8;
     this.current_page = 1;
     this.events = this.eventService.createRandomEvents();
 
