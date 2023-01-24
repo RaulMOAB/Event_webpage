@@ -1,14 +1,16 @@
-<div class="container-fluid gx-5 overflow-hidden" id="container-events">
+<div class="container-fluid gx-0 overflow-hidden" id="container-events">
     <div class="row d-flex">
-        <h1 class="text-center text-white mt-5 mb-5">Próximos eventos</h1>
+      <div class="next-events m-0 g-0">
+          <h1 class="text-center text-white mt-3 mb-3 next-events">Próximos eventos</h1>
+      </div>
        <div class="col-auto col-xl-3 d-flex align-items-center" *ngFor="let event of events | paginate: {itemsPerPage: events_per_page, currentPage: current_page}">
         <div class="card mt-3 mb-5 m-auto text-center" style="width: 18rem;" id="card" >
-            <img src="../../../assets/events_img/{{event._name}}.jpg" class="card-img-top img-fluid h-75" alt="{{event._name}}">
+            <img src="../../../assets/events_img/{{event._name}}.jpg" class="card-img-top img-fluid h-75 imgBx" alt="{{event._name}}">
             <div class="card-body">
               <h5 class="card-title">{{event._name}}</h5>
               <p class="card.text">{{event._date | date: 'dd/MM/yyyy'}}</p>
               <p class="card-text text-muted">{{event._type}} · <span class="">{{event._location}}</span></p>
-              <a href="#" class="btn btn-primary text-center ">{{event._price | currency:'EUR'}}</a>             
+              <button type="button"  class="btn btn-primary text-center ">{{event._price | currency:'EUR'}}</button>          
             <span class="mx-2">
               <button type="button" *ngIf="user_role == 'admin'" class="btn btn-danger text-center mx-2" (click)="delete_event(event)">Delete</button>
               <button type="button" *ngIf="user_role == 'admin'" class="btn btn-warning text-center " (click)="modify_event">Modify</button>            

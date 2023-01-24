@@ -10,16 +10,7 @@ export class EventDbService {
   events!:Event[];
   delete_event!:Event[];
 
-  // private event_list = new BehaviorSubject(this.events);
-
-  // public obs_list = this.event_list.asObservable();
-
-  // update(event: Event[]){
-  //   this.event_list.next(event);
-  // }
-  
-  
-
+ 
   constructor() { 
     this.events = this.createRandomEvents();
   }
