@@ -12,6 +12,7 @@ import { Event } from '../../model/event';
 export class EventsComponent implements OnInit{
 
   events!:Event[];
+  updated_list!:Event[];
   events_per_page!:number;
   current_page!:number;
 
@@ -31,11 +32,14 @@ export class EventsComponent implements OnInit{
    
     this.user_cookie = this.MyCookie.get('user_cookie').split(' '); // ['username', 'role']
     this.service.update_role(this.user_cookie[1]);
-    console.log(this.user_cookie);
+    //console.log(this.user_cookie);
   }
 
   delete_event(eventObj:Event){
-    console.log(eventObj._name);//captura el nombre del evento
+
+    this.events = this.eventService.deleteEvent(eventObj);
+    console.log(this.events);
+
   }
 
   modify_event(){

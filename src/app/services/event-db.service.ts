@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Event } from '../model/event';
 
 @Injectable({
@@ -7,6 +8,16 @@ import { Event } from '../model/event';
 export class EventDbService {
 
   events!:Event[];
+  delete_event!:Event[];
+
+  // private event_list = new BehaviorSubject(this.events);
+
+  // public obs_list = this.event_list.asObservable();
+
+  // update(event: Event[]){
+  //   this.event_list.next(event);
+  // }
+  
   
 
   constructor() { 
@@ -40,7 +51,7 @@ export class EventDbService {
     
     
     
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       //random genertor
       let random_names:number     = this.randomGenerator(events_name);
       let random_types:number     = this.randomGenerator(event_types);
@@ -51,6 +62,7 @@ export class EventDbService {
       
 
       let event_created = new Event(
+        i,
         events_name[random_names],
         event_types[random_types],
         random_dates_obj,
@@ -62,6 +74,20 @@ export class EventDbService {
     }
 
     return event_list;
+  }
+
+  deleteEvent(eventObj:Event):Event[]{
+
+    this.events.forEach((event, index) =>{
+      if (event._id == eventObj._id) {    
+        this.events.splice(index,1);
+      }
+
+    })
+
+    console.log('delete en el servicio');
+    console.log(this.events);
+    return this.events;
   }
 
    

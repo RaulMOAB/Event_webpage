@@ -15,7 +15,7 @@ export class UsersDbService{
   public role  = this.user_role.asObservable();
 
   is_logged(login:boolean){
-    this.logged_in.next(login);
+    this.logged_in.next(login);//next envia la variable a todos los que estan suscritos
   }
 
   update_role(role:string){
