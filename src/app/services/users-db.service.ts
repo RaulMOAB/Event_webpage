@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user';
 
@@ -18,7 +18,7 @@ export class UsersDbService{
     this.logged_in.next(login);
   }
 
-  get_role(role:string){
+  update_role(role:string){
     this.user_role.next(role);
   }
 
@@ -100,7 +100,7 @@ export class UsersDbService{
     const information:string[]  = ['Videojuegos', 'Accesorios', 'Novedades del mercado'];
 
     const user_admin = new User('raulmontoro', 'rma@gmail.com','Soltero/a','Hombre', 'Videojuegos', '12345678','admin');
-    const user_buyer = new User('alvin', 'amg@gmail.com','Soltero/a','Hombre', 'Videojuegos', '12345678','buyer');
+    const user_buyer = new User('alvingarcia', 'amg@gmail.com','Soltero/a','Hombre', 'Videojuegos', '12345678','buyer');
     registered_users.push(...[user_admin, user_buyer]);
 
     //console.table(registered_users);
