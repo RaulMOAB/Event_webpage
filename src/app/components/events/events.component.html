@@ -20,7 +20,7 @@
         <div class="col-4 px-3">
           <div class="">
            <h3>Localidades</h3>
-            <select class="form-select mt-3" aria-label="Default select example" [(ngModel)]="selected_location"  (ngModelChange)="filterEvents()">
+            <select class="form-select mt-3" [(ngModel)]="selected_location"  (ngModelChange)="filterEvents()">
               <option value={{city}} *ngFor="let city of locations;" >{{city}}</option>
             </select>
           </div>
