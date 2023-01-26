@@ -1,57 +1,76 @@
 <div class="container-fluid gx-0 overflow-hidden" id="container-events">
-    <div class="row d-flex">
-      <div class="next-events m-0 g-0">
-        <div class="content">
-          <h1 class="text-center text-white py-3 mb-3 events">Próximos eventos</h1>
+  <div class="row d-flex">
+    <div class="next-events m-0 g-0">
+      <div class="content">
+        <h1 class="text-center text-white py-3 mb-3 events">Próximos eventos</h1>
+      </div>
+    </div>
+    <!-- filters-->
+    <div class="row text-white">
+      <div class="">
+        <h5 class="px-5">Búsqueda avanzada  <button type="button" class="search" (click)="toggleDiv()"><i
+                class="fa-solid fa-magnifying-glass text-white"></i></button></h5>
+      </div>
+
+      <div class="col-sm-6 col-xl-4 p-3 mb-3 mx-5 rounded bg-light bg-gradient" *ngIf="display">
+        <div class="col px-3">
+          <div class="d-flex align-self-center">
+            <p class=" text-dark opacity-75 px-2">Precio</p>
+            <input type="range" [(ngModel)]="filterByPrice" (ngModelChange)="filterEvents()"
+             class="form-range">
+           <p class="text-dark fw-bold px-2">{{filterByPrice | currency: 'EUR'}}</p>
+          </div>
+        </div>
+        <div class="col px-3">
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01">Localidad</label>
+              <select class="form-select" id="inputGroupSelect01" [(ngModel)]="selected_location"
+                (ngModelChange)="filterEvents()">
+                <option selected>Selecciona...</option>
+                <option value={{city}} *ngFor="let city of locations;">{{city}}</option>
+              </select>
+            </div>
+        </div>
+        <div class="col px-3">         
+          <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" [(ngModel)]="filterByName" placeholder="Busca por evento"
+              aria-label="Search">
+            <button class="btn btn-outline-success" type="button" (click)="filterEvents()">Search</button>
+          </div>
         </div>
       </div>
-      <!-- filters -->
-       <div class="row text-white">
-        <div class="col-4 mx-5 px-3">
-          <h3>Filtrar</h3>
-          <div class="d-flex">
-            <p>
-              Precio
-              Por precio: <input type="range" [(ngModel)]="filterByPrice" (ngModelChange)="filterEvents()" class="form-range mx-2">
-              {{filterByPrice | currency: 'EUR'}}
-            </p>
-          </div>
-        </div>    
-        <div class="col-4 px-3">
-          <div class="">
-           <h3>Localidades</h3>
-            <select class="form-select mt-3" [(ngModel)]="selected_location"  (ngModelChange)="filterEvents()">
-              <option value={{city}} *ngFor="let city of locations;" >{{city}}</option>
-            </select>
-          </div>
-        </div>
-        <!-- Not coinicidences -->
-        <div *ngIf="events.length === 0">
+      <!-- Not coinicidences -->
+      <!-- <div *ngIf="events.length === 0">
           <p>No se ha encontrado ninguna coincidencia</p>
           <p>Pruebe con otros filtros</p>
-        </div>
-       </div>
-      <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3" *ngFor="let event of events | paginate: {itemsPerPage: events_per_page, currentPage: current_page}">
-        <div class="card mt-3  m-auto text-center  img-container" style="width: 18rem;" id="card" >
-            <img src="../../../assets/events_img/{{event._name}}.jpg" class="card-img-top img-fluid event-img" alt="{{event._name}}">
-            <div class="card-body">
-              <h5 class="card-title">{{event._name}}</h5>
-              <hr>
-              <div class="d-flex flex-column mb-3">
-                <p class="card.text">{{event._date | date: 'dd/MM/yyyy'}}</p>
-                <p class="card-text text-muted">{{event._type}} · <span class="">{{event._location}}</span></p>
-              </div>
-              <span class="mx-2">
-              <button type="button"  class="btn btn-primary text-center ">{{event._price | currency:'EUR'}}</button>          
-              <button type="button" *ngIf="user_role == 'admin'" class="btn btn-danger text-center mx-2" (click)="delete_event(event)">Delete</button>
-              <button type="button" *ngIf="user_role == 'admin'" class="btn btn-warning text-center " (click)="modify_event">Modify</button>            
-            </span>
-            </div>
-          </div>
-        </div>
-        <div class="">
-          <pagination-controls class="mt-3 fw-bold text-center text-white " (pageChange)="current_page = $event"></pagination-controls>
-        </div>
+        </div> -->
     </div>
-    
+    <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3"
+      *ngFor="let event of events | paginate: {itemsPerPage: events_per_page, currentPage: current_page}">
+      <div class="card mt-3  m-auto text-center  img-container" style="width: 18rem;" id="card">
+        <img src="../../../assets/events_img/{{event._name}}.jpg" class="card-img-top img-fluid event-img"
+          alt="{{event._name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{event._name}}</h5>
+          <hr>
+          <div class="d-flex flex-column mb-3">
+            <p class="card.text">{{event._date | date: 'dd/MM/yyyy'}}</p>
+            <p class="card-text text-muted">{{event._type}} · <span class="">{{event._location}}</span></p>
+          </div>
+          <span class="mx-2">
+            <button type="button" class="btn btn-primary text-center ">{{event._price | currency:'EUR'}}</button>
+            <button type="button" *ngIf="user_role == 'admin'" class="btn btn-danger text-center mx-2"
+              (click)="delete_event(event)">Delete</button>
+            <button type="button" *ngIf="user_role == 'admin'" class="btn btn-warning text-center "
+              (click)="modify_event">Modify</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <pagination-controls class="mt-3 fw-bold text-center text-white "
+        (pageChange)="current_page = $event"></pagination-controls>
+    </div>
+  </div>
+
 </div>

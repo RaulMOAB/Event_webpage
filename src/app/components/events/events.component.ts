@@ -14,28 +14,33 @@ export class EventsComponent implements OnInit{
   events!:Event[];
   updated_list!:Event[];
   filtered_events!:Event[];
-  events_per_page!:number;
-  current_page!:number;
-
+  
   user_role!:string;
   user_cookie!:string[];
-
+  //pagination  
+  events_per_page!:number;
+  current_page!:number;
   //filter variables
   filterByPrice!:number;
-
   locations!:string[];
   selected_location!:string;
+  filterByName!:string;
+
+  //aux variable
+  display!:boolean;
 
   constructor(private eventService:EventDbService, private service:UsersDbService, private MyCookie:CookieService){}
 
   ngOnInit(): void {
+    this.display = true;//pasar a false
     this.events_per_page = 8;
     this.current_page = 1;
     this.events = this.eventService.createRandomEvents();
 
-    this.filterByPrice = 40;
-    this.locations = this.eventService.locations;
     this.filtered_events = this.events;
+    this.filterByPrice   = 40;
+    this.locations       = this.eventService.locations;
+    this.filterByName    = "";
 
     this.service.role.subscribe(
       role => {this.user_role = role;}
@@ -47,10 +52,7 @@ export class EventsComponent implements OnInit{
   }
 
   delete_event(eventObj:Event){
-
     this.events = this.eventService.deleteEvent(eventObj);
-    console.log(this.events);
-
   }
 
   modify_event(){
@@ -58,15 +60,21 @@ export class EventsComponent implements OnInit{
   }
 
   filterEvents(){
-    console.log(this.selected_location);
+ 
     this.events = this.filtered_events.filter(event => {
       if ((Number(event._price) <= this.filterByPrice) &&
-       (event._location.indexOf(this.selected_location) !== -1)) {      
+       (event._location.indexOf(this.selected_location) !== -1) &&
+       (event._name.indexOf(this.filterByName) !== -1)) {      
         return true;      
     }
 
     return false;
     });
+    console.log(this.filterByName);
+  }
 
+  toggleDiv(){
+    this.display = !this.display;
+    console.log(this.display);
   }
 }
