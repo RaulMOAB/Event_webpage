@@ -26,7 +26,7 @@
               <label class="input-group-text" for="inputGroupSelect01">Localidad</label>
               <select class="form-select" id="inputGroupSelect01" [(ngModel)]="selected_location"
                 (ngModelChange)="filterEvents()">
-                <option selected>Selecciona...</option>
+                <option value="">Selecciona...</option>
                 <option value={{city}} *ngFor="let city of locations;">{{city}}</option>
               </select>
             </div>

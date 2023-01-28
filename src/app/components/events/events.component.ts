@@ -23,8 +23,9 @@ export class EventsComponent implements OnInit{
   //filter variables
   filterByPrice!:number;
   locations!:string[];
-  selected_location!:string;
+  selected_location:string = '';
   filterByName!:string;
+  
 
   //aux variable
   display!:boolean;
