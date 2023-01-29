@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { EventDbService } from 'src/app/services/event-db.service';
 import { UsersDbService } from 'src/app/services/users-db.service';
@@ -10,6 +10,7 @@ import { Event } from '../../model/event';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit{
+  to_modify_event!:Event;
 
   events!:Event[];
   updated_list!:Event[];
@@ -50,14 +51,16 @@ export class EventsComponent implements OnInit{
     this.user_cookie = this.MyCookie.get('user_cookie').split(' '); // ['username', 'role']
     this.service.update_role(this.user_cookie[1]);
     //console.log(this.user_cookie);
+
+
   }
 
   delete_event(eventObj:Event){
     this.events = this.eventService.deleteEvent(eventObj);
   }
 
-  modify_event(){
-
+  modify_event(selected_event:Event):void{
+    this.to_modify_event =  selected_event;
   }
 
   filterEvents(){

@@ -1,0 +1,20 @@
+
+.error{
+  color: rgb(226, 6, 6);
+}
+.register-body{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  min-height: 100vh;
+  background: rgb(29,45,180);
+  background: linear-gradient(325deg, rgba(29,45,180,1) 45%, rgba(90,174,255,1) 100%);
+
+}
+form{
+  background-color: rgba(255, 255, 255, 0.966);
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 15%;
+}
+.ng-invalid:not(form).ng-touched{
+  border: 1px solid rgb(212, 12, 12);
+}

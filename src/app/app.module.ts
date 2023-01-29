@@ -18,6 +18,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EventsComponent } from './components/events/events.component';
+import { MailValidatorDirective } from './directives/mail-validator.directive';
+import { OffensiveUsernameDirective } from './directives/offensive-username.directive';
+import { ModifyFormComponent } from './components/modify-form/modify-form.component';
+import { EventDateValidatorDirective } from './directives/event-date-validator.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { EventsComponent } from './components/events/events.component';
     ConfirmPasswordDirective,
     RegisterFormComponent,
     NavbarComponent,
-    EventsComponent
+    EventsComponent,
+    MailValidatorDirective,
+    OffensiveUsernameDirective,
+    ModifyFormComponent,
+    EventDateValidatorDirective
   ],
   imports: [
     NgxPaginationModule,

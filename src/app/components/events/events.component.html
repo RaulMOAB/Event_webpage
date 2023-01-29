@@ -62,7 +62,7 @@
             <button type="button" *ngIf="user_role == 'admin'" class="btn btn-danger text-center mx-2"
               (click)="delete_event(event)">Delete</button>
             <button type="button" *ngIf="user_role == 'admin'" class="btn btn-warning text-center "
-              (click)="modify_event">Modify</button>
+              (click)="modify_event(event)" data-bs-toggle="modal" data-bs-target="#modifyModal">Modify</button>
           </span>
         </div>
       </div>
@@ -73,4 +73,18 @@
     </div>
   </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modifyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modifyModalLabel">Modificacion</h1>
+      </div>
+      <div class="modal-body">
+        <app-modify-form [selected_event]="to_modify_event"></app-modify-form>
+      </div>
+    </div>
+  </div>
 </div>

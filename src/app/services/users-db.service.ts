@@ -133,4 +133,19 @@ check_login(username:string, password:string):string{
   return exist;
  
  }
+
+ existUser (username:String):boolean{
+  let exist:boolean = false;
+
+  this.users.forEach(user => {
+    if(user.username === username){
+     exist = true;
+    }
+  });
+  return exist;
+}
+
+registerUser(user:User):void{
+  this.users.push(user);
+}
 }
