@@ -65,7 +65,7 @@ export class EventsComponent implements OnInit{
 
   filterEvents(){
  
-    this.events = this.filtered_events.filter(event => {
+    this.filtered_events = this.filtered_events.filter(event => {
       if ((Number(event._price) <= this.filterByPrice) &&
        (event._location.indexOf(this.selected_location) !== -1) &&
        (event._name.indexOf(this.filterByName) !== -1)) {      

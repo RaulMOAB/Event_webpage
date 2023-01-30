@@ -9,11 +9,7 @@
           <div class="alert alert-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
             <div *ngIf="name.errors?.['required']"></div>
               El nombre del evento es un campo obligatorio
-          </div>
-          <!-- <div [hidden]="modifyForm.valid || modifyForm.pristine"
-              class="alert alert-danger">
-              Name is required
-          </div> -->
+          </div>          
         </div>
       
         <div class="form-group">
@@ -30,7 +26,7 @@
       
         <div class="form-group">
           <label for="date">Fecha</label>
-          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="selected_event._date" #date="ngModel" appEventDateValidator>
+          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="selected_event._date" value={{aux_date}} #date="ngModel" appEventDateValidator>
           
           <div class="alert alert-danger" *ngIf="date.invalid && (date.touched || date.dirty)">
               La fecha no puede exceder de 1 año.
@@ -56,7 +52,7 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-warning mt-4 " data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
+          <button class="btn btn-warning mt-4 "  data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
         </div>
       </form>
     </div>

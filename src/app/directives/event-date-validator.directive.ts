@@ -13,11 +13,11 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class EventDateValidatorDirective implements Validator{
   actual_date = new Date();
+
   
   constructor() { }
-  validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    const string_date = <string>control.value;
-    let selected_date = Date.parse(string_date);
+  validate(control: AbstractControl<any, any>): ValidationErrors | null {    
+    let selected_date = Date.parse(control.value);
     let end_date =this.actual_date.getTime()
     let diff =selected_date-end_date
     let one_year_miliseconds =(86400000*365);

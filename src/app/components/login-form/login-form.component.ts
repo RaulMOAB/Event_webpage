@@ -48,6 +48,7 @@ export class LoginFormComponent implements OnInit{
 
       if (this.has_logged == 'true') {
         this.service.is_logged(true);
+        this.router.navigate(['/events']);
         
       }else{
         this.service.is_logged(false);

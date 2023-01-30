@@ -6,9 +6,9 @@
       </div>
     </div>
     <!-- filters-->
-    <div class="row text-white">
+    <div class="row">
       <div class="">
-        <h5 class="px-5">Búsqueda avanzada  <button type="button" class="search" (click)="toggleDiv()"><i
+        <h5 class="px-5 text-white">Búsqueda avanzada  <button type="button" class="search" (click)="toggleDiv()"><i
                 class="fa-solid fa-magnifying-glass text-white"></i></button></h5>
       </div>
 
@@ -37,16 +37,17 @@
               aria-label="Search">
             <button class="btn btn-outline-success" type="button" (click)="filterEvents()">Search</button>
           </div>
+          <p class="m-0 mt-2 fw-semibold">Coincidencias:<span class="text-success fs-5"> {{filtered_events.length}}</span>  eventos</p>
         </div>
       </div>
       <!-- Not coinicidences -->
-      <!-- <div *ngIf="events.length === 0">
+      <div *ngIf="filtered_events.length === 0">
           <p>No se ha encontrado ninguna coincidencia</p>
           <p>Pruebe con otros filtros</p>
-        </div> -->
+        </div>
     </div>
-    <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3"
-      *ngFor="let event of events | paginate: {itemsPerPage: events_per_page, currentPage: current_page}">
+    <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3" style="min-height: 50%;"
+      *ngFor="let event of filtered_events | paginate: {itemsPerPage: events_per_page, currentPage: current_page}">
       <div class="card mt-3  m-auto text-center  img-container" style="width: 18rem;" id="card">
         <img src="../../../assets/events_img/{{event._name}}.jpg" class="card-img-top img-fluid event-img"
           alt="{{event._name}}">
@@ -83,7 +84,7 @@
         <h1 class="modal-title fs-5" id="modifyModalLabel">Modificacion</h1>
       </div>
       <div class="modal-body">
-        <app-modify-form [selected_event]="to_modify_event"></app-modify-form>
+        <app-modify-form [selected_event]="to_modify_event"></app-modify-form> <!--selected_event es el Input-->
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@ export class EventDbService {
   event_types:string[] = ['Concert', 'Movie'];
   dates:string[]       = ['2023-05-15', '2023-10-14', '2023-01-30', '2023-06-11','2023-02-04'];
   locations:string[]   = ['Barcelona', 'Madrid', 'Granada'];
-  prices:string[]      = ['35.95', '96.50', '25.50',' 75.99', '12'];
+  prices:string[]      = ['35.95', '96.50', '25.50',' 75.50', '12'];
 
  
   constructor() { 
@@ -44,7 +44,7 @@ export class EventDbService {
       let random_dates:number     = this.randomGenerator(this.dates);
       let random_locations:number = this.randomGenerator(this.locations);
       let random_prices:number    = this.randomGenerator(this.prices);
-      let random_dates_obj:Date = new Date(this.dates[random_dates]);
+      let random_dates_obj:Date   = new Date(this.dates[random_dates]);
       
 
       let event_created = new Event(
