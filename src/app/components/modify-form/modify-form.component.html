@@ -4,7 +4,7 @@
       <form #modifyForm="ngForm">
         <div class="form-group">
           <label for="name">Nombre</label>
-          <input type="text" class="form-control" id="name" name="name" [ngModel]="selected_event.name" maxlength="50" required  #name="ngModel">
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="aux_name" maxlength="50" required  #name="ngModel">
           <div class="alert alert-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
             <div *ngIf="name.errors?.['required']"></div>
               El nombre del evento es un campo obligatorio
@@ -13,7 +13,7 @@
       
         <div class="form-group">
           <label for="type">Tipo</label>
-          <select  class="form-select" name="types" id="type" [(ngModel)]="selected_event.type" >
+          <select  class="form-select" name="types" id="type" [(ngModel)]="aux_type" >
             <option 
               name="type"
               value={{type}}
@@ -25,7 +25,7 @@
       
         <div class="form-group">
           <label for="date">Fecha</label>
-          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="selected_event.date"  [(ngModel)]="aux_date"  #date="ngModel" appEventDateValidator>
+          <input type="date" class="form-control" id="date" name="date"  [(ngModel)]="aux_date"  #date="ngModel" appEventDateValidator>
           
           <div class="alert alert-danger" *ngIf="date.invalid && (date.touched || date.dirty)">
               La fecha no puede exceder de 1 año.
@@ -35,7 +35,7 @@
       
         <div class="form-group">
           <label for="location">Localidad</label>
-          <select name="location" id="location"  class="form-select" [(ngModel)]="selected_event.location">
+          <select name="location" id="location"  class="form-select" [(ngModel)]="aux_location">
             <option 
             name="type"
             value={{location}}
@@ -47,11 +47,11 @@
       
         <div class="form-group">
           <label for="price">Precio</label>
-          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="selected_event._price" >
+          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="aux_price" >
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-warning mt-4" data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
+          <button class="btn btn-warning mt-4" (click)="modifyEvent()" data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
         </div>
       </form>
     </div>
