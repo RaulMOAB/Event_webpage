@@ -8,7 +8,7 @@ export class Event{
   
 
 
-    public constructor(id:number, name:string, type:string, date:Date, location:string, price:string){
+    public constructor(id:number =0, name:string="", type:string="", date:Date=new Date(), location:string="", price:string=""){
         this._id        = id;
         this._name      = name;
         this._type      = type;
@@ -39,5 +39,30 @@ export class Event{
     
     public set price (price:string){
         this._price = price;
+    }
+
+
+    public get id (){
+        return this._id;
+    }
+
+    public get name (){
+        return this._name;
+    }
+
+    public get type (){
+        return  this._type ;
+    }
+
+    public get date (){
+        return  this._date;
+    }
+
+    public get location (){
+        return this._location;
+    }
+    
+    public get price (){
+        return this._price ;
     }
 }

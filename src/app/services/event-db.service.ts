@@ -70,9 +70,6 @@ export class EventDbService {
       }
 
     })
-
-    console.log('delete en el servicio');
-    console.log(this.events);
     return this.events;
   }
 
