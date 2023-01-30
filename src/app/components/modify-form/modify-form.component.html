@@ -4,8 +4,7 @@
       <form #modifyForm="ngForm">
         <div class="form-group">
           <label for="name">Nombre</label>
-          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="selected_event.name" maxlength="50" required  #name="ngModel">
-
+          <input type="text" class="form-control" id="name" name="name" [ngModel]="selected_event.name" maxlength="50" required  #name="ngModel">
           <div class="alert alert-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
             <div *ngIf="name.errors?.['required']"></div>
               El nombre del evento es un campo obligatorio
@@ -52,7 +51,7 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-warning mt-4 "  data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
+          <button class="btn btn-warning mt-4" data-bs-dismiss="modal" [disabled]="modifyForm.invalid">Modificar evento</button>
         </div>
       </form>
     </div>
