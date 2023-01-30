@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { EventDbService } from 'src/app/services/event-db.service';
 import { UsersDbService } from 'src/app/services/users-db.service';
@@ -10,7 +10,7 @@ import { Event } from '../../model/event';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit{
-  to_modify_event!:Event;
+  event_to_modify!:Event;
 
   events!:Event[];
   filtered_events!:Event[];
@@ -59,7 +59,7 @@ export class EventsComponent implements OnInit{
   }
 
   modify_event(selected_event:Event):void{
-    this.to_modify_event =  selected_event;
+    this.event_to_modify =  selected_event;
   }
 
   filterEvents(){
