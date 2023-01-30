@@ -13,7 +13,6 @@ export class EventsComponent implements OnInit{
   to_modify_event!:Event;
 
   events!:Event[];
-  updated_list!:Event[];
   filtered_events!:Event[];
   
   user_role!:string;
@@ -65,7 +64,7 @@ export class EventsComponent implements OnInit{
 
   filterEvents(){
  
-    this.filtered_events = this.filtered_events.filter(event => {
+    this.filtered_events = this.events.filter(event => {
       if ((Number(event._price) <= this.filterByPrice) &&
        (event._location.indexOf(this.selected_location) !== -1) &&
        (event._name.indexOf(this.filterByName) !== -1)) {      

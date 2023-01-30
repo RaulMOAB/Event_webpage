@@ -41,9 +41,10 @@
         </div>
       </div>
       <!-- Not coinicidences -->
-      <div *ngIf="filtered_events.length === 0">
-          <p>No se ha encontrado ninguna coincidencia</p>
-          <p>Pruebe con otros filtros</p>
+      <div class="col-xl-3 col-4 bg-light text-center rounded align-items-center mb-5 fs-4" *ngIf="filtered_events.length === 0">
+          <p class="mt-4">No se ha encontrado ninguna coincidencia <br>
+          Pruebe con otros filtros
+          </p>      
         </div>
     </div>
     <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3" style="min-height: 50%;"
