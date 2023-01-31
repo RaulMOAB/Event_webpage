@@ -16,7 +16,7 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors } from '@angular/forms
 export class OffensiveUsernameDirective {
   @Input() username:any;
 
-  offensivesUsernames:string[] =['cancer','ebola','maricon','puta','puto','tonto','pussy','dick','sausage','pene'];
+  offensivesUsernames:string[] =['tonto','caca','culo','pis']; // palabras censuradas
 
   constructor() { }
 

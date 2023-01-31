@@ -12,13 +12,12 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors } from '@angular/forms
   ]
 })
 export class MailValidatorDirective {
-  @Input() mail!:any;
+  
   constructor() { }
   
   validate(control: AbstractControl): ValidationErrors | null {  
-    console.log(this.mail);
-    if (this.mail.endsWith('proven.cat')) {
-      console.log('Valido');
+    let mail = control.value
+    if (mail.endsWith('proven.cat') || mail.endsWith('gmail.com')) {
       return null;
     }else{
       return {'noMatch': true}

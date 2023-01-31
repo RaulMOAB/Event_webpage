@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { UsersDbService } from 'src/app/services/users-db.service';
@@ -54,7 +54,6 @@ export class LoginFormComponent implements OnInit{
         this.service.is_logged(false);
        
       }
-console.log(this.is_logged);
 
     this.username = '';
     this.password = '';

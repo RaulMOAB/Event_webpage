@@ -5,15 +5,17 @@
 .register-body{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   min-height: 100vh;
-  background: rgb(29,45,180);
-  background: linear-gradient(325deg, rgba(29,45,180,1) 45%, rgba(90,174,255,1) 100%);
-
+  background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
 }
+
 form{
   background-color: rgba(255, 255, 255, 0.966);
   padding: 25px;
   border-radius: 15px;
-  margin-top: 15%;
+}
+.blue-text{
+  color: hsl(218deg 81% 75%);
 }
 .ng-invalid:not(form).ng-touched{
   border: 1px solid rgb(212, 12, 12);

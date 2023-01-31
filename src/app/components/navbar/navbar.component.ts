@@ -21,10 +21,11 @@ export class NavbarComponent implements OnInit{
     this.myCookie.get('user_cookie');
     this.service.login.subscribe(
       login =>{
-        this.has_logged = login;  
+        this.has_logged = login;
               
       }          
     );
+    
     this.has_localStorage = localStorage.getItem('has_logged')!;
   }
 

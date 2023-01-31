@@ -27,7 +27,6 @@ export class ModifyFormComponent implements OnChanges{
   constructor(private service:EventDbService){}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes); // Es interesante para sacar informacion del objeto, en clase lo miramos
 
     if (this.selected_event !== undefined) {//Si no es undefined es que tiene el evento
       //Formateando la fecha
@@ -42,9 +41,6 @@ export class ModifyFormComponent implements OnChanges{
       this.aux_price = this.selected_event.price;  
     }
   }
-
-  //TODO Preguntar para desabilitar el campo del nombre
-  //TODO boton de cerrar y dejar objeto como estaba antes
   
   modifyEvent(){
     //Al dar click a Modificar evento, llamara etsa funcion quye inicializara todas las propiedades del objeto a las variables auxiliares que ya estan modificadas
