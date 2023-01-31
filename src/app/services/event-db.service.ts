@@ -25,6 +25,9 @@ export class EventDbService {
     this.events = this.createRandomEvents();
   }
 
+  getEvents():Event[]{
+    return this.events
+  }
 
 
   randomGenerator(list:string[]):number{
@@ -37,7 +40,7 @@ export class EventDbService {
 
     let event_list:Event[] = [];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       //random genertor
       let random_names:number     = this.randomGenerator(this.events_name);
       let random_types:number     = this.randomGenerator(this.event_types);
@@ -62,15 +65,17 @@ export class EventDbService {
     return event_list;
   }
 
-  deleteEvent(eventObj:Event):Event[]{
-
+  deleteEvent(eventObj:Event){
     this.events.forEach((event, index) =>{
-      if (event._id == eventObj._id) {    
+      if (event._id == eventObj._id) {  
+        console.log("Borro");  
         this.events.splice(index,1);
+        console.log(this.events.length);
       }
 
     })
-    return this.events;
+    
+    //return this.events;
   }
 
    

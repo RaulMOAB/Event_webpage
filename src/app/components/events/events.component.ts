@@ -33,7 +33,7 @@ export class EventsComponent implements OnInit{
   constructor(private eventService:EventDbService, private service:UsersDbService, private MyCookie:CookieService){}
 
   ngOnInit(): void {
-    this.display = true;//pasar a false
+    this.display = false;//pasar a false
     this.events_per_page = 8;
     this.current_page = 1;
     this.events = this.eventService.createRandomEvents();
@@ -55,7 +55,9 @@ export class EventsComponent implements OnInit{
   }
 
   delete_event(eventObj:Event){
-    this.events = this.eventService.deleteEvent(eventObj);
+    this.eventService.deleteEvent(eventObj);
+    this.filterEvents();
+    //console.log(this.events);
   }
 
   modify_event(selected_event:Event):void{
@@ -64,20 +66,20 @@ export class EventsComponent implements OnInit{
 
   filterEvents(){
  
-    this.filtered_events = this.events.filter(event => {
+    this.filtered_events = this.eventService.events.filter(event => {
       if ((Number(event._price) <= this.filterByPrice) &&
        (event._location.indexOf(this.selected_location) !== -1) &&
        (event._name.indexOf(this.filterByName) !== -1)) {      
         return true;      
     }
-
+    //console.log(this.filtered_events.length);
+    //console.log(this.events.length);
     return false;
     });
-    console.log(this.filterByName);
+
   }
 
   toggleDiv(){
     this.display = !this.display;
-    console.log(this.display);
   }
 }
