@@ -47,7 +47,10 @@
       
         <div class="form-group">
           <label for="price">Precio</label>
-          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="aux_price" >
+          <input type="number" class="form-control" id="price" name="price" step=".01" [(ngModel)]="aux_price" #price="ngModel" required>
+          <div class="alert alert-danger" *ngIf="price.invalid && (price.touched || price.dirty)">
+            El precio no puede estar vacío
+        </div>
         </div>
 
         <div class="modal-footer">

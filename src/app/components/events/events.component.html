@@ -37,14 +37,22 @@
               aria-label="Search">
             <button class="btn btn-outline-success" type="button" (click)="filterEvents()">Search</button>
           </div>
-          <p class="m-0 mt-2 fw-semibold">Coincidencias:<span class="text-success fs-5"> {{filtered_events.length}}</span>  eventos</p>
+          <div class="d-flex align-content-between">
+            <div class="col">
+              <p class="m-0 mt-2 fw-semibold">Coincidencias:<span class="text-success fs-5"> {{filtered_events.length}}</span>  eventos</p>
+            </div>
+            <div class="col-auto col-xl-6">
+              <label for="items" class="px-2">Eventos por página</label>
+              <input type="number" class="mt-2 col-3 text-center" name="num" id="num" [(ngModel)]="events_per_page" min="1">     
+            </div>
+          </div>
         </div>
       </div>
       <!-- Not coinicidences -->
       <div class="col-xl-3 col-4 bg-light text-center rounded align-items-center mb-5 fs-4" *ngIf="filtered_events.length === 0">
           <p class="mt-4 text-danger">No se ha encontrado ninguna coincidencia <br>
           Pruebe con otros filtros
-          </p>      
+          </p>   
         </div>
     </div>
     <div class="col-auto col-xl-3 col-sm-4 d-flex align-items-center mb-3" style="min-height: 50%;"

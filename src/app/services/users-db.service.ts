@@ -11,11 +11,11 @@ export class UsersDbService{
   private logged_in = new BehaviorSubject(false);
   private user_role = new BehaviorSubject('buyer');
 
-  public login = this.logged_in.asObservable();
+  public login = this.logged_in.asObservable();//escucha el behaivorSubject
   public role  = this.user_role.asObservable();
 
   is_logged(login:boolean){
-    this.logged_in.next(login);//next envia la variable a todos los que estan suscritos
+    this.logged_in.next(login);//next envia la variable a todos los que estan suscritos, nuevo valor del observable
   }
 
   update_role(role:string){

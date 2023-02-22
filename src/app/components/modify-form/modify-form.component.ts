@@ -21,7 +21,7 @@ export class ModifyFormComponent implements OnChanges{
   aux_date!:string;
   aux_name!:string;
   aux_type!:string;
-  aux_price!:string;
+  aux_price!:number;
   aux_location!:string;
 
   constructor(private service:EventDbService){}
@@ -38,16 +38,16 @@ export class ModifyFormComponent implements OnChanges{
       this.aux_name = this.selected_event.name;
       this.aux_type = this.selected_event.type;
       this.aux_location = this.selected_event.location;
-      this.aux_price = this.selected_event.price;  
+      this.aux_price = parseFloat(parseFloat(this.selected_event.price).toFixed(2));  
     }
   }
   
   modifyEvent(){
-    //Al dar click a Modificar evento, llamara etsa funcion quye inicializara todas las propiedades del objeto a las variables auxiliares que ya estan modificadas
+    //Al dar click a Modificar evento, llamara etsa funcion que inicializara todas las propiedades del objeto a las variables auxiliares que ya estan modificadas
     this.selected_event.name = this.aux_name;
     this.selected_event.type = this.aux_type;
     this.selected_event.location = this.aux_location;
-    this.selected_event.price = this.aux_price;
+    this.selected_event.price = this.aux_price.toString();
     this.selected_event.date = new Date(this.aux_date); //Parseamos aux_date porque es un string
   }
  
